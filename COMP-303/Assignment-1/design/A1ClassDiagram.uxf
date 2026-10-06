@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>740</x>
+      <y>0</y>
+      <w>370</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>Simulation
+--
+-map:Map
+-avatars:List&lt;Avatar&gt;
+-iterations:int
+--
++Simulation(map:Map, avatars:List&lt;Avatar&gt;): Simulation
++run(iterations:int):void
++displayMap():void
++promptUserForSetup():void
+--
+Responsibilities
+-- Initialize map and avators
+-- Run the simulations</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1220</x>
+      <y>220</y>
+      <w>220</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>Map
+--
+-width:int
+-length:int
+-grid:Cell[][]
+--
++Map(width:int, lenght:int):Map
++isWalkable(x:int, y:int):boolean
++randomizeObstacles():void
++placeAvatar(avatar:Avatar):void
++toString():String
+--
+Responsibilities
+-- Initialize map
+-- Update map</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>280</y>
+      <w>510</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>Avatar
+--
+-id:int
+-x:int
+-y:int
+-power:int
+-direction:Direction
+-ai:AI
+-avatarType: AvatarType
+--
++Avatar(id:int,x:int,y:int,ai:AI,avatarType:AvatarType): Avatar
++think(sensors:String): String
++updatePosition(newX:int, newY:int):void
++hasPower(): boolean
++decreasePower():void
++setAI(ai:AI):void
++getAvatarType():AvatarType
++getDirection():Direction
++setDirection(Direction):void
+--
+Responsibilities
+-- Digital representation of creatures
+-- Executes avatar actions</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>930</x>
+      <y>360</y>
+      <w>210</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+AI
+--
+--
++think(sensors:String): String
+--
+Responsibilities
+-- host signature of think method
+group=group-6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>640</y>
+      <w>190</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>FollowEdge
+--
+--
++think(sensors:String): String
+--
+Responsibilities
+-- Specific think action
+group=group-6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1110</x>
+      <y>640</y>
+      <w>200</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>RandomAction
+--
+--
++think(sensors:String): String
+--
+Responsibilities
+-- Specific think action
+group=group-6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1130</x>
+      <y>400</y>
+      <w>100</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=group-6</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0;80.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>400</y>
+      <w>90</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+group=group-6</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0;10.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1530</x>
+      <y>280</y>
+      <w>310</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Cell
+--
+-walkable:boolean
+-occupant:Avatar
+--
++Cell(walkable:boolean, occupant:Avatar): Cell
++getWalkable():boolean
++getOccupant():Avatar
++setWalkable():void
++SetOccupant():void
+--
+Responsibilities
+-- Store info about the cell</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>30</y>
+      <w>280</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=n
+avatar</panel_attributes>
+    <additional_attributes>260.0;20.0;10.0;20.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1430</x>
+      <y>270</y>
+      <w>120</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=n
+Cell</panel_attributes>
+    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>60</x>
+      <y>380</y>
+      <w>180</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AvatarType
+--
+PERSON
+ANIMAL
+ROBOT
+--
+--
+Responsibilities
+-- Determine avatar type</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>400</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>370</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1100</x>
+      <y>20</y>
+      <w>260</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;240.0;10.0;240.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>140</y>
+      <w>230</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+Direction
+--
+NORTH
+EAST
+SOUTH
+WEST
+--
+--
+Responsibilities
+-- Determine direction of movement</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>150</y>
+      <w>100</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;230.0;30.0;230.0;30.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

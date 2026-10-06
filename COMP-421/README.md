@@ -16,3 +16,4 @@ The larger database project is kept in its own repositories rather than duplicat
 These repositories preserve the collaborative project structure and history. The course project covered database modeling, relational design, implementation, query/index analysis, and application/database logic for a digital eBook commerce system.
 
 Written report submissions are not duplicated here. Some group documents contain identifying information for multiple team members and should be sanitized before any public upload.
+The supplied course archive also contains document-based assignments and a three-part database project covering ER/data modeling, relational-schema design, database implementation, indexing/query analysis, and application/database logic for a digital eBook commerce platform.
