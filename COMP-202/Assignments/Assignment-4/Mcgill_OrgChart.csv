@@ -1,0 +1,22 @@
+Name:,McGill
+Location:,Montreal,Canada
+Date :   ,31,3,1821
+Motto:,By work all things increase and grow
+Link:,https://www.mcgill.ca/orgchart/
+
+ID ,Title,Name,Supervisor
+1,4000,H.Deep Saini,-1,Principal 
+2,3500,Angela Campbell,1,Vice Principal
+3,2440,Bruce Lennox,2,Dean
+4,1100,Gregor Fussmann,3,Department Chair
+5,1200,Mathieu Blanchette,3,Department Chair
+6,150,Oana Balmau,5,Professor
+7,151,Jin Guo,5,Professor
+8,151,Christophe Dubach,5,Professor
+9,800,Guilia Albertini,5,Faculty Lecturer
+10,570,Faten Mhiri,5,Faculty Lecturer
+11,900,Joseph Vybihall,5,Faculty Lecturer
+12,870,Jacob Errington,5,Faculty Lecturer
+13,80,Saad Yousaf,10,Teaching Assistant
+14,50,MirHamed JafarzadehAsl,10,Teaching Assistant
+15,20,Neil Rahman,10,Teaching Assistant
