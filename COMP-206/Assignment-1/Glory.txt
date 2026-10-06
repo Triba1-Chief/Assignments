@@ -1,0 +1,1 @@
+mkdir -p Fall2023/COMP206/{lectures,labs,guides,assignments/assign1/{backup,docs/{html,txt},database,src/{sh,c},tests}}
