@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>252</y>
+      <w>270</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>Student
+--
+-id: String
+-name: String
+-enrolledCourses: List&lt;CourseEnrollment&gt;
+-account Account
+--
++enrollInCourse(course: Course): void
++viewGrades(): Map&lt;Course, Grade&gt;
++makePayment(amount: double): void
+--
+Responsibilities
+-- Hold student information</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>585</x>
+      <y>27</y>
+      <w>324</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Singleton&gt;&gt;
+School
+--
+-instance: School
+-name: String
+-students: List&lt;Student&gt;
+-courses: List&lt;Course&gt;
+--
++getInstance(): School
++addStudent(student: Student): void
++addCourse(course: Course): void
++findStudent(id: String): Student
++findCourse(code: String): Course
+--
+Responsibilities
+-- Keep a record of all students in school
+-- Keep a record of courses taught in school
+-- Provide a global access point for data manipulation</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1089</x>
+      <y>234</y>
+      <w>306</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>Course
+--
+-id: String
+-name: String
+-instructor: String
+-enrollments: List&lt;CourseEnrollment&gt;
+--
++addStudent(student:Student): void
++removeStudent(student:Student): void
++getEnrolledStudents(): List&lt;Student&gt;
++calculateAverageGrade(): double
+--
+Responsibilities
+-- Holds course information 
+-- Performs registration/deregistration of students</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>333</x>
+      <y>540</y>
+      <w>225</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>Account
+--
+-balance: double
+-transactions: List&lt;Payment&gt;
+--
++addFunds(amount:double): void
++makePayment(amount:double): void
++getBalance(): double
+--
+Responsibilities
+-- Performs financial operations</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>621</x>
+      <y>288</y>
+      <w>216</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>CourseEnrollment
+--
+-student: Student
+-course: Course
+-grade: Grade
+--
++assignGrade(grade: Grade): void
++getGrade(): Grade
+--
+Responsibilities
+-- Links Student and Course class
+-- Handles grading of students</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>945</x>
+      <y>657</y>
+      <w>459</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>Comment:
+- School(Singleton) stores global student &amp; course data.
+- CourseEnrollment links Student &amp; Course, which avoids inappropriate intimacy.
+- No class performs "everything" which avoids God class</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>252</x>
+      <y>81</y>
+      <w>351</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=n
+student</panel_attributes>
+    <additional_attributes>370.0;20.0;10.0;20.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>900</x>
+      <y>99</y>
+      <w>360</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=n
+course</panel_attributes>
+    <additional_attributes>10.0;20.0;370.0;20.0;370.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>333</x>
+      <y>288</y>
+      <w>306</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=n
+student</panel_attributes>
+    <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>666</x>
+      <y>576</y>
+      <w>225</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>Payment
+--
+-amount:double
+-description
+-date: Date
+--
++getAmount(): double
++getDescription(): String
++getDate(): Date
+--
+Responsibilities
+-- Represents the payment information</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>567</y>
+      <w>135</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=n
+payment</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>333</x>
+      <y>315</y>
+      <w>153</w>
+      <h>243</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1
+student</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0;110.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>828</x>
+      <y>288</y>
+      <w>279</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=n
+course</panel_attributes>
+    <additional_attributes>290.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>909</x>
+      <y>432</y>
+      <w>162</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+Grade
+--
+A
+B
+C
+D
+F
+--
+--
+Responsibilities
+-- Determine student grade</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>828</x>
+      <y>333</y>
+      <w>180</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+student</panel_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0;180.0;110.0</additional_attributes>
+  </element>
+</diagram>

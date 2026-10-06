@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>390</y>
+      <w>180</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Model&gt;&gt;
+&lt;&lt;Observer&gt;&gt;
+Consumer
+--
+-email:String
+--
++Consumer(email:String):Consumer
++getEmail():String
++Update(article:Article):void
+--
+Responsibilities
+-- Represents a printer subscriber
+-- Observes ArticleStoreModel for one hashtag</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>126</y>
+      <w>222</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Singleton&gt;&gt;
+&lt;&lt;Model&gt;&gt;
+NewsStore
+--
+-INSTANCE:NewsStore
+-articles:List&lt;Article&gt;
+-subscriptions:Map&lt; hashtag:String,List&lt;Subscriber&gt;
+--
++getInstance():NewsStore
++getArticles():List&lt;Article&gt;
++addSubscriber(hashtag:String,subcriber:Subcriber):void
++addArticle(article:Article):void
++notifySubscriber(article:Article):void
+--
+Responsibilities
+-- Holds all posted articles and manages subscriptiona
+-- Subject of observer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>432</x>
+      <y>390</y>
+      <w>168</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Model&gt;&gt;
+Article
+--
+-hashtag:String
+-info:String
+--
++Article(hashtag:String,info:String): Article
++getInfo():String
++getHashTag():String
+--
+Responsibilities
+-- Represents a single article entry</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>306</x>
+      <y>558</y>
+      <w>192</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Static&gt;&gt;
+EmailClient
+--
+--
++send(emailAddress:String,message:String):void
+--
+Responsibilities
+-- Emails the message to the email address</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1032</x>
+      <y>576</y>
+      <w>240</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;UI input field&gt;&gt;
+SubscriberView
+--
+-hashtag:String
+-email:String
+--
++getHashTag():String
++getEmail():String
+--
+Responsibilities
+-- Has 2 input boxes for consumer details</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>654</x>
+      <y>438</y>
+      <w>252</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>MainController
+--
+-emailClient:EmailClient
+-mainView:MainView
+-reportersView:ReportersView
+-subscriberView:SubscriberView
+--
++onInputArticlePressed():void
++onSubmitArticle(hashTag:String,text:String)void
++onSubscribeToArticlePressed():void
++onSubmitSubscription(hashTag:String,email:String):void
++onCloseApplication():void
++showMainView():void
++showReportersView():void
++showSubscriberView():void
+--
+Responsibilities
+-- Owns the main UI and handles switching between views
+-- Collects article text and hashtag from view then calls the model
+-- Collects hashtag and email for subscription</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1038</x>
+      <y>468</y>
+      <w>210</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;UI input field&gt;&gt;
+ReportersView
+--
+-hashTag:String
+-text:String
+--
++getHashTag():String
++getText():String
+--
+Responsibilities
+-- Has 2 input boxes for article details</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1062</x>
+      <y>372</y>
+      <w>162</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>MainView
+--
++inputArticleButton():void
++subscribeToArticleButton():void
++closeApplicationButton():void
+--
+Responsibilities
+-- Main menu screen with 2 options</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>786</x>
+      <y>666</y>
+      <w>168</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Note..
+onSubmitArticle(hashTag,text)
+    article = new ArticleModel(hashTag,text)
+    store.addArticle(article)
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>84</x>
+      <y>216</y>
+      <w>120</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Note..
+addArticle(article):
+    articles.add(article)
+    notifySubscribers(article)
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>612</x>
+      <y>666</y>
+      <w>168</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Note..
+onSubmitSubscription(hashtag, email):
+    observer = new Consumer(email)
+    store.addSubscriber(hashTag, observer)
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>66</x>
+      <y>132</y>
+      <w>162</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Note..
+addSubscriber(hashtag,consumer):
+	if hashtag not in subscriptions:
+		subscriptions[hashtag] = new List()
+	subscriptions[hashtag].add(consumer)
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>66</x>
+      <y>594</y>
+      <w>228</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Note..
+update(article):
+    EmailClient.send(this.getEmail(),article.getInfo())
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>852</x>
+      <y>612</y>
+      <w>18</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>684</x>
+      <y>612</y>
+      <w>18</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1380</x>
+      <y>270</y>
+      <w>72</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+Viewable
+--
++displayAll():void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>84</x>
+      <y>300</y>
+      <w>126</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Observer&gt;&gt;
+&lt;&lt;Interface&gt;&gt;
+Subscriber
+--
++update(article:Article):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1278</x>
+      <y>270</y>
+      <w>72</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+Clickable
+--
++click(item):void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1326</x>
+      <y>474</y>
+      <w>120</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+View
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1380</x>
+      <y>306</y>
+      <w>54</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1320</x>
+      <y>306</y>
+      <w>66</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>876</x>
+      <y>384</y>
+      <w>198</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0;310.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>900</x>
+      <y>486</y>
+      <w>150</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>882</x>
+      <y>612</y>
+      <w>162</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;250.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>900</x>
+      <y>570</y>
+      <w>144</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+controller selects view</panel_attributes>
+    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>900</x>
+      <y>510</y>
+      <w>150</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+controller selects view</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>900</x>
+      <y>426</y>
+      <w>174</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+controller selects view</panel_attributes>
+    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1218</x>
+      <y>396</y>
+      <w>120</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>180.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1242</x>
+      <y>504</y>
+      <w>96</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>140.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1266</x>
+      <y>528</y>
+      <w>72</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>900</x>
+      <y>528</y>
+      <w>150</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+invokes handler</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>900</x>
+      <y>594</y>
+      <w>144</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+invokes handler</panel_attributes>
+    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>900</x>
+      <y>438</y>
+      <w>174</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+invokes handler</panel_attributes>
+    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>120</x>
+      <y>360</y>
+      <w>102</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0;150.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>222</x>
+      <y>150</y>
+      <w>78</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>198</x>
+      <y>234</y>
+      <w>102</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>174</y>
+      <w>114</w>
+      <h>228</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=n
+articles</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0;130.0;360.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>510</y>
+      <w>78</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=n</panel_attributes>
+    <additional_attributes>110.0;100.0;10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>162</x>
+      <y>456</y>
+      <w>60</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0;10.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>324</x>
+      <y>510</y>
+      <w>342</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=n</panel_attributes>
+    <additional_attributes>550.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>594</x>
+      <y>444</y>
+      <w>72</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=n
+m2=1</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>132</y>
+      <w>288</w>
+      <h>318</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>450.0;510.0;450.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
