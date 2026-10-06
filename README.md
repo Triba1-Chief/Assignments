@@ -4,6 +4,7 @@ Coursework is organized by course, then by assignment.
 
 ## Courses
 
+- [COMP 202](./COMP-202/) — Foundations of Programming
 - [COMP 206](./COMP-206/) — Introduction to Software Systems
 - [COMP 250](./COMP-250/) — Introduction to Computer Science
 - [COMP 251](./COMP-251/) — Algorithms and Data Structures
